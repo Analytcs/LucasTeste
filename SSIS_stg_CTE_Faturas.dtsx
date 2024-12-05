@@ -1,0 +1,1441 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2020 7:00:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-SM0OMGC"
+  DTS:CreatorName="DESKTOP-SM0OMGC\ASUS"
+  DTS:DTSID="{8E029ACF-4ED2-4A4C-9A59-147C25AAA7DC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="SSIS_stg_CTE_Faturas"
+  DTS:PackageType="5"
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{E3DB6971-E55A-40F8-AF18-A1C65959646E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBStage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+      DTS:ObjectName="DBStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.87.220;User ID=sqldba;Initial Catalog=DBStage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwk7QiGaW9023/E2v2PDonAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAk6LBO/ToY7g6fbdis5+b66kCU+xbR+gNeWveC5WGW/gAAAAAOgAAAAAIAACAAAACH6k3p/el+ehTiWbF2klAoogiY2KstrQXQ+ZTJA2hDViAAAACpTMiKVND2o1nKnWtKOzWhb7YWeXFpJTXjH09XdJOF3kAAAACs/I3XW095TqnL6t/wWWQf7VqP8bgP+qGfdOTdmkSnyRr4R+VrrX7XAQKjt7mrJdf292dOYRRs1FeLk7juj0cc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFTRAN_TRANSLUTE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{508D23F7-5ED3-4E26-B5CF-3E63FC24E7F5}"
+      DTS:ObjectName="SOFTRAN_TRANSLUTE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.87.87;User ID=softran;Initial Catalog=softran_translute;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwk7QiGaW9023/E2v2PDonAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABQ0ZUcJVwzKdR54va3cYFsln8Tz+NKobKsCngfwfExTgAAAAAOgAAAAAIAACAAAABQ9NyqvsWpTj0/pN/RX2G8Rh+ZCAkYnzVeJITqAQtZQBAAAADwxaKGcTJOVEf8g6E+pZCkQAAAAEX6gPXshD1zYCiNYd4pYa6sKqzAZKnpwY61ayFRqx1HcohFliO3A1nyzvaIp4HUT3R34s1S1wHlW4suiM4Wggc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C71403D-76C0-4DEE-AC8D-AEB3C70EA2B7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dthr_filtro_final">
+      <DTS:VariableValue
+        DTS:DataType="8">2020-05-13 12:24:14.270</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41F6F630-6295-469B-A8E4-70DCF6D6E669}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dthr_filtro_inicial">
+      <DTS:VariableValue
+        DTS:DataType="8">2020-04-20 08:00:00</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B4BE6ECC-B410-4153-BDE2-D300CBC629ED}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="nomepacote">
+      <DTS:VariableValue
+        DTS:DataType="8">SSIS_stg_CTE_Faturas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4A4128BF-2422-4D98-B2CF-268A6667508B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="procid">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{92FCD089-CE94-4B04-BCA9-9D9AA5CFA3A1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="retornoverificacao">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Consulta Data Processamento"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{1312AED7-18B1-4F25-8F50-B2D0140C8B44}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Consulta Data Processamento"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+          SQLTask:SqlStatementSource="SPC_DATAHORA_PROCESSAMENTO ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="dthr_filtro_inicial"
+            SQLTask:DtsVariableName="User::dthr_filtro_inicial" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="dthr_filtro_final"
+            SQLTask:DtsVariableName="User::dthr_filtro_final" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::procid"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Finaliza Processamento"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{704BD798-4942-442C-979F-DA6CC30D28E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Finaliza Processamento"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+          SQLTask:SqlStatementSource="SPA_FINALIZA_PROCESSAMENTO ?,1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::procid"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Inicia Processamento"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{396FC724-1EF1-4F97-8A37-13FC1FD85695}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Inicia Processamento"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+          SQLTask:SqlStatementSource="SPI_CONTROLE_PROCESSAMENTO ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="procid"
+            SQLTask:DtsVariableName="User::procid" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::nomepacote"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{00FF2E81-D12F-444D-A742-8CDA2602C4DE}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Delete Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{936eae54-41f0-4709-9a42-b9cd02247674}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+              SQLTask:SqlStatementSource="delete from [dbo].[CTEFaturas]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\DFT - CTE - Faturas"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{D1DA75A5-EAEC-47A5-88E1-49DD2D93D922}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - CTE - Faturas"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DEST CTE"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[CTEFaturas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBStage]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBStage]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Ponto_Operacao]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="36"
+                          cachedName="Ponto_Operacao"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Ponto_Operacao]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Ponto_Operacao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[CNPJ_CTE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="CNPJ_CTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[CNPJ_CTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CNPJ_CTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[CTE]"
+                          cachedDataType="i4"
+                          cachedName="CTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[CTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Dtemissao]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Dtemissao"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Dtemissao]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Dtemissao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Valor_CTE]"
+                          cachedDataType="cy"
+                          cachedName="Valor_CTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Valor_CTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_CTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[STATUSFATURA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="19"
+                          cachedName="STATUSFATURA"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[STATUSFATURA]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[STATUSFATURA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Fatura]"
+                          cachedDataType="i4"
+                          cachedName="Fatura"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Fatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Fatura]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[DtemissaoFatura]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="DtemissaoFatura"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtemissaoFatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtemissaoFatura]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[DtVenctoFatura]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="DtVenctoFatura"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtVenctoFatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtVenctoFatura]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[DtPAgamentoFatura]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="DtPAgamentoFatura"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtPAgamentoFatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtPAgamentoFatura]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Valor_Fatura]"
+                          cachedDataType="cy"
+                          cachedName="Valor_Fatura"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Valor_Fatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_Fatura]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[Saldo]"
+                          cachedDataType="cy"
+                          cachedName="Saldo"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Saldo]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Saldo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[TipoDoc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="TipoDoc"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[TipoDoc]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[TipoDoc]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[SérieDoc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="SérieDoc"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[SérieDoc]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[SérieDoc]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[NrTitulo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="NrTitulo"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[NrTitulo]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[NrTitulo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[UsrCTE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="UsrCTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[UsrCTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrCTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].Columns[UsrFat]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="UsrFat"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[UsrFat]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrFat]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Ponto_Operacao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="36"
+                          name="Ponto_Operacao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[CNPJ_CTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="CNPJ_CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[CTE]"
+                          dataType="i4"
+                          name="CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Dtemissao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Dtemissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Valor_CTE]"
+                          dataType="cy"
+                          name="Valor_CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[STATUSFATURA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          name="STATUSFATURA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Fatura]"
+                          dataType="i4"
+                          name="Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtemissaoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtemissaoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtVenctoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtVenctoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[DtPAgamentoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtPAgamentoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Valor_Fatura]"
+                          dataType="cy"
+                          name="Valor_Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[Saldo]"
+                          dataType="cy"
+                          name="Saldo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[TipoDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TipoDoc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[SérieDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="SérieDoc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[NrTitulo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="NrTitulo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[UsrCTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="UsrCTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input].ExternalColumns[UsrFat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="UsrFat" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Origem CTE"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Log]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct
+		 concat (tb1.CdEmpresa, tb1.NrSeqControle,tb1.NrDoctoFiscal)  as Ponto_Operacao,
+	   concat (SUBSTRING (tb2.DSAPELIDO,1,3), tb1.NrDoctoFiscal) as CNPJ_CTE,
+		tb1.NrDoctoFiscal as CTE,		   
+		convert(varchar,tb1.DtEmissao,103) Dtemissao, 
+		 convert(money,tb1.VlTotalPrestacao) Valor_CTE,
+		  case when tb9.VLSALDO = 0 then 'FATURA PAGA' 
+       when tb9.VLSALDO &gt; 0 and tb9.VLSALDO &lt;&gt;tb8.VlTotal then 'FATURA PAGA PARCIAL'
+       else 'FATURA NAO PAGA'
+	   end as STATUSFATURA,
+	   tb8.CdFatura       Fatura,
+		convert(varchar,tb8.DtEmissao,103) DtemissaoFatura,
+		 convert(varchar,tb9.DtVencimento,103) DtVenctoFatura,
+		 convert(varchar,tb9.DtPagto,103) DtPAgamentoFatura,
+		 convert(money,tb8.VlTotal )       Valor_Fatura,
+		 convert(money,tb9.VLSALDO)       Saldo,
+			tb6.DsApelido     TipoDoc,
+		tb6.nrserie       SérieDoc,
+		tb9.CdTitulo      NrTitulo,
+		tb1.dsusuario     UsrCTE, 
+		tb8.DsUsuarioInc  UsrFat
+           FROM 
+                GTCCONHE tb1 with(nolock) 
+     inner join SISEMPRE tb2 with(nolock) on tb1.CdEmpresa   = tb2.CDEMPRESA      --- EMpresa
+      inner join SISTDF   tb6 with(nolock) on tb1.CdTpDoctoFiscal = tb6.CdTpDoctoFiscal
+      left join Gtcfatit tb7 with(nolock) on tb1.NrSeqControle = tb7.NrSeqControle 
+                                         and tb1.CdEmpresa = tb7.CdEmpresa 
+										 and isnull(tb7.Insituacao, '0') &lt;&gt; '1' 
+      left join GTCFat   tb8 with(nolock) on tb7.CdFatura = tb8.CdFatura 
+                                         and tb7.CdParcela = tb8.CdParcela
+										 and tb7.CdEmpresa = tb8.CdEmpresa
+										 and tb1.CdInscricao = tb8.CdInscricao
+										 and tb8.DtCancelamento is null
+     left join GFATitu  tb9 with(nolock)  on tb8.CdFatura = tb9.NrFatura 
+	                                     and tb8.CdEmpresa = tb9.CdFilial 
+										 and tb8.CdInscricao = tb9.CdInscricao 
+										 and  inpagarreceber=1
+     left join Gfamovcc tb10 with(nolock) on tb9.CdTitulo = tb10.DsComplemento  
+     left join Gfamovti tb11 with(nolock) on tb9.CdTitulo = tb11.CdTitulo-- and a.CdFilial = t.CdEmpresaPagto 
+ 					                     and tb9.CdInscricao = tb11.CdInscricao
+					                     and tb11.DtCancelamento is null
+         WHERE 1 = 1  
+      and tb1.DtCancelamento IS NULL and  1=1
+	  and tb1.CdEmpresa &lt;&gt; 99999
+	  and tb1.cdremetente IS NOT NULL
+	  and tb1.dtemissao&gt;='01/01/2022 00:00:00'</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parâmetro0:Input",{41F6F630-6295-469B-A8E4-70DCF6D6E669};"Parâmetro1:Input",{8C71403D-76C0-4DEE-AC8D-AEB3C70EA2B7};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SOFTRAN_TRANSLUTE]"
+                      connectionManagerRefId="Package.ConnectionManagers[SOFTRAN_TRANSLUTE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Ponto_Operacao]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Ponto_Operacao]"
+                          length="36"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Ponto_Operacao]"
+                          name="Ponto_Operacao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CNPJ_CTE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[CNPJ_CTE]"
+                          length="15"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CNPJ_CTE]"
+                          name="CNPJ_CTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CTE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[CTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[CTE]"
+                          name="CTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Dtemissao]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Dtemissao]"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Dtemissao]"
+                          name="Dtemissao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_CTE]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Valor_CTE]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_CTE]"
+                          name="Valor_CTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[STATUSFATURA]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[STATUSFATURA]"
+                          length="19"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[STATUSFATURA]"
+                          name="STATUSFATURA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Fatura]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Fatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Fatura]"
+                          name="Fatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtemissaoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtemissaoFatura]"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtemissaoFatura]"
+                          name="DtemissaoFatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtVenctoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtVenctoFatura]"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtVenctoFatura]"
+                          name="DtVenctoFatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtPAgamentoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtPAgamentoFatura]"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[DtPAgamentoFatura]"
+                          name="DtPAgamentoFatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_Fatura]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Valor_Fatura]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Valor_Fatura]"
+                          name="Valor_Fatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Saldo]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Saldo]"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[Saldo]"
+                          name="Saldo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[TipoDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[TipoDoc]"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[TipoDoc]"
+                          name="TipoDoc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[SérieDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[SérieDoc]"
+                          length="3"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[SérieDoc]"
+                          name="SérieDoc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[NrTitulo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[NrTitulo]"
+                          length="15"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[NrTitulo]"
+                          name="NrTitulo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrCTE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[UsrCTE]"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrCTE]"
+                          name="UsrCTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrFat]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[UsrFat]"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].Columns[UsrFat]"
+                          name="UsrFat"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Ponto_Operacao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="36"
+                          name="Ponto_Operacao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[CNPJ_CTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="CNPJ_CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[CTE]"
+                          dataType="i4"
+                          name="CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Dtemissao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Dtemissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Valor_CTE]"
+                          dataType="cy"
+                          name="Valor_CTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[STATUSFATURA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          name="STATUSFATURA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Fatura]"
+                          dataType="i4"
+                          name="Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtemissaoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtemissaoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtVenctoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtVenctoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[DtPAgamentoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DtPAgamentoFatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Valor_Fatura]"
+                          dataType="cy"
+                          name="Valor_Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[Saldo]"
+                          dataType="cy"
+                          name="Saldo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[TipoDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TipoDoc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[SérieDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="SérieDoc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[NrTitulo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="NrTitulo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[UsrCTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="UsrCTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output].ExternalColumns[UsrFat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="UsrFat" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Ponto_Operacao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="36"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Ponto_Operacao]"
+                          name="Ponto_Operacao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[CNPJ_CTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[CNPJ_CTE]"
+                          name="CNPJ_CTE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[CTE]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[CTE]"
+                          name="CTE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Dtemissao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Dtemissao]"
+                          name="Dtemissao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Valor_CTE]"
+                          dataType="cy"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Valor_CTE]"
+                          name="Valor_CTE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[STATUSFATURA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[STATUSFATURA]"
+                          name="STATUSFATURA" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Fatura]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Fatura]"
+                          name="Fatura" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtemissaoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtemissaoFatura]"
+                          name="DtemissaoFatura" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtVenctoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtVenctoFatura]"
+                          name="DtVenctoFatura" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtPAgamentoFatura]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[DtPAgamentoFatura]"
+                          name="DtPAgamentoFatura" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Valor_Fatura]"
+                          dataType="cy"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Valor_Fatura]"
+                          name="Valor_Fatura" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Saldo]"
+                          dataType="cy"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[Saldo]"
+                          name="Saldo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[TipoDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[TipoDoc]"
+                          name="TipoDoc" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[SérieDoc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[SérieDoc]"
+                          name="SérieDoc" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[NrTitulo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[NrTitulo]"
+                          name="NrTitulo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[UsrCTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[UsrCTE]"
+                          name="UsrCTE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[UsrFat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[UsrFat]"
+                          name="UsrFat" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\DFT - CTE - Faturas.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{640C0E42-0F7E-4FBB-A96C-D179E9A250F0}"
+          DTS:From="Package\Sequence Container\Delete Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\Sequence Container\DFT - CTE - Faturas" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Verifica Execucao"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{30B522EE-ABE9-4860-B06B-D0A110EE5EA8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Verifica Execucao"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+          SQLTask:SqlStatementSource="exec SPC_VERIFICA_PROCESSAMENTO ? "
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="ret"
+            SQLTask:DtsVariableName="User::retornoverificacao" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::nomepacote"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9A650D52-2092-4968-800A-EF07C3A8DA8E}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::retornoverificacao]==0"
+      DTS:From="Package\Verifica Execucao"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Inicia Processamento" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9D5E38FC-CB06-4291-9F7A-A5B5B1E52597}"
+      DTS:From="Package\Inicia Processamento"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Consulta Data Processamento" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4F08D102-ABB6-4CB0-BA93-7ED794528FEB}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Finaliza Processamento" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{489C4222-879C-4951-835D-D58974A64F62}"
+      DTS:From="Package\Consulta Data Processamento"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{AE7BB321-774F-4EA4-8078-193DF860FD03}"
+      DTS:EventID="168193528"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="A propriedade propagate do evento"
+          DTS:DTSID="{E51ED8E2-E27B-4292-A9BB-503487A33073}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Log Erro"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{508913C5-8856-4CEF-A8AA-225E35F3C681}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Erro"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3633040A-FAA8-438B-ADD8-7327C538A0B8}"
+              SQLTask:SqlStatementSource="SPA_FINALIZA_PROCESSAMENTO ?,3" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@proc_id"
+                SQLTask:DtsVariableName="User::procid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Consulta Data Processamento"
+          TopLeft="276.523809685999,198" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Finaliza Processamento"
+          TopLeft="272.761904502401,551.584313584401" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Inicia Processamento"
+          TopLeft="279.71428560724,113.305881992591" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Sequence Container\Delete Table"
+          TopLeft="69.4285718275577,6.5529391001665" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Sequence Container\DFT - CTE - Faturas"
+          TopLeft="56.8571430420389,93.3764711545002" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Restrição]"
+          TopLeft="140.542857434798,48.1529391001665">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.2235320543337"
+              Start="0,0"
+              End="0,37.7235320543337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.7235320543337" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="289,190"
+          Size="289,233"
+          Id="Package\Sequence Container"
+          TopLeft="227.730157959218,291.64836658315" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Verifica Execucao"
+          TopLeft="294.28571425652,23.0705877033484" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="371.99999993188,65.0705877033484">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.2352942892426"
+              Start="0,0"
+              End="0,40.7352942892426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.7352942892426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,12.3676471446213,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="370.369047646619,155.305881992591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.694118007409"
+              Start="0,0"
+              End="0,35.194118007409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.194118007409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="369.24603123081,524.44836658315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.1359470012509"
+              Start="0,0"
+              End="0,19.6359470012509">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.6359470012509" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="371.926983822608,239.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.0483665831501"
+              Start="0,0"
+              End="0,44.5483665831501">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5483665831501" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package.EventHandlers[OnError]\Log Erro"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT - CTE - Faturas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE"
+          TopLeft="356.571428989878,49.4941175698409" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE"
+          TopLeft="373.42857141884,204" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT - CTE - Faturas.Paths[OLE DB Source Output]"
+          TopLeft="423.771428989878,91.0941175698409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.4571424289621,112.905882430159"
+              Start="0,0"
+              End="12.4571424289621,105.405882430159">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4529412150795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.4529412150795"
+                    Point2="0,56.4529412150795"
+                    Point3="4,56.4529412150795" />
+                  <mssgle:LineSegment
+                    End="8.45714242896207,56.4529412150795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.45714242896207,56.4529412150795"
+                    Point2="12.4571424289621,56.4529412150795"
+                    Point3="12.4571424289621,60.4529412150795" />
+                  <mssgle:LineSegment
+                    End="12.4571424289621,105.405882430159" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT - CTE - Faturas\DEST CTE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT - CTE - Faturas\Origem CTE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
