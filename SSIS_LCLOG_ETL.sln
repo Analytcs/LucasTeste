@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS_LCLOG_ETL_STAGE", "SSIS_LCLOG_ETL_STAGE\SSIS_LCLOG_ETL_STAGE.dtproj", "{C7034A38-4B5B-4CE9-812A-58692330A112}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7034A38-4B5B-4CE9-812A-58692330A112}.Development|Default.ActiveCfg = Development
+		{C7034A38-4B5B-4CE9-812A-58692330A112}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DACCF317-9E95-495F-A226-24BE937A7E43}
+	EndGlobalSection
+EndGlobal
