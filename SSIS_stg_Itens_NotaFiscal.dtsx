@@ -1,0 +1,1530 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/2/2023 10:47:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BRAIN-BRJ740JZT"
+  DTS:CreatorName="BRAIN-BRJ740JZT\BRAIN"
+  DTS:DTSID="{041ADF37-DD78-4835-8E5F-1351738CB14B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="SSIS_stg_Itens_NotaFiscal"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{8F1F613F-6C0E-4497-BB4B-E047AABA9B0D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBStage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B3505576-1049-48A2-A03E-3DC14735DA3D}"
+      DTS:ObjectName="DBStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.87.220;User ID=sqldba;Initial Catalog=DBStage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwk7QiGaW9023/E2v2PDonAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACyHqS+8wVHXRuuaGNQwXTj44QSekNLlE9qm4KKg7FfEwAAAAAOgAAAAAIAACAAAABitKMtK5p6Dd2V9J2s7QAshfQuxI1qLVNyUd5vWIUX/yAAAACxmU3uIwgQkrZeuAVVFdSaYXRfKINezMT9NnSCJX24b0AAAACVQZUGdWeJi6DDk0cdZuCriO2B0ynJIOQux2WQDtWs05/GvAE93mdjEEwOvVEAAd7rYeBf21OW7UpOq5BdiKXF</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFTRANS_TRANSLUTE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F540184A-FC9D-41EA-8D5B-14C71643E623}"
+      DTS:ObjectName="SOFTRANS_TRANSLUTE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.87.87;User ID=softran;Initial Catalog=softran_translute;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-SSIS_stg_Justificativa_Entrega-{F540184A-FC9D-41EA-8D5B-14C71643E623}SOFTRANS_TRANSLUTE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwk7QiGaW9023/E2v2PDonAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB1lvfomZj16E3e/Y/XLtF3noNFqGuVIZ6Ky6I5rUSMkQAAAAAOgAAAAAIAACAAAABuhUXlCMoTMPV+pZhTeScOE0VHdZ5pDAjJXN4nSYCaGRAAAAAJxyFJxBqQkBCVcPD4aBKoQAAAAF1LZkbFmvWegpFQgUGCfwVNmXVxbZqGfiipYfi0Pnn0KsvL3PG56C+bIJWDucbXrUtHBY5+giJWt386iD5mNuY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{024d9e52-4493-4e57-9054-04e5d6c83062}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Delete Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{3c1cec18-aabe-45dc-8574-052f1b3d0077}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3505576-1049-48A2-A03E-3DC14735DA3D}"
+              SQLTask:SqlStatementSource="delete from [dbo].[stg_ITENNFQUALIDADE]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{8DAAB782-BACB-4595-8C30-746C349E50AD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Destino OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[stg_ITENNFQUALIDADE]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBStage]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBStage]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CdEmpresa]"
+                          cachedDataType="i4"
+                          cachedName="CdEmpresa"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdEmpresa]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdEmpresa]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[DsApelidoEmitente]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="DsApelidoEmitente"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsApelidoEmitente]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsApelidoEmitente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[NrDoctoFiscal]"
+                          cachedDataType="i4"
+                          cachedName="NrDoctoFiscal"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrDoctoFiscal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[DtEmissao]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtEmissao"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DtEmissao]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DtEmissao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[QtPeso]"
+                          cachedDataType="numeric"
+                          cachedName="QtPeso"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtPeso]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtPeso]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[QtVolume]"
+                          cachedDataType="numeric"
+                          cachedName="QtVolume"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtVolume]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtVolume]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[Cliente]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Cliente"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Cliente]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Cliente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CdInscricao]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="CdInscricao"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdInscricao]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdInscricao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CidadeOrigem]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="CidadeOrigem"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CidadeOrigem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeOrigem]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[UFOrigem]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="UFOrigem"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[UFOrigem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFOrigem]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CidadeDestino]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="CidadeDestino"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CidadeDestino]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeDestino]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[UFDestino]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="UFDestino"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[UFDestino]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFDestino]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[NrNotaFiscal]"
+                          cachedDataType="i4"
+                          cachedName="NrNotaFiscal"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrNotaFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrNotaFiscal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[DataNF]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DataNF"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DataNF]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DataNF]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[PesoNF]"
+                          cachedDataType="numeric"
+                          cachedName="PesoNF"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[PesoNF]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoNF]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CdProdCliente]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="CdProdCliente"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdProdCliente]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdProdCliente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[DsProdCliente]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="DsProdCliente"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsProdCliente]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsProdCliente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[QtdItem]"
+                          cachedDataType="numeric"
+                          cachedName="QtdItem"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtdItem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtdItem]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[PesoItem]"
+                          cachedDataType="numeric"
+                          cachedName="PesoItem"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[PesoItem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoItem]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[NomeMotorista]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="NomeMotorista"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NomeMotorista]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NomeMotorista]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CPFMotorista]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="CPFMotorista"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CPFMotorista]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CPFMotorista]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[TipoMotorista]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TipoMotorista"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoMotorista]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoMotorista]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[Placa1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="Placa1"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa1]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[TipoVeiculo1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TipoVeiculo1"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo1]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[Placa2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="Placa2"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa2]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[TipoVeiculo2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TipoVeiculo2"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo2]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[Placa3]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="Placa3"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa3]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa3]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[TipoVeiculo3]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TipoVeiculo3"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo3]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo3]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[ANTT]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="ANTT"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[ANTT]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[ANTT]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[NrRomaneio]"
+                          cachedDataType="i4"
+                          cachedName="NrRomaneio"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrRomaneio]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrRomaneio]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[CdTpDoctoFiscal]"
+                          cachedDataType="i4"
+                          cachedName="CdTpDoctoFiscal"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdTpDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdTpDoctoFiscal]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdEmpresa]"
+                          dataType="i4"
+                          name="CdEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsApelidoEmitente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="DsApelidoEmitente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrDoctoFiscal]"
+                          dataType="i4"
+                          name="NrDoctoFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="DtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtPeso]"
+                          dataType="numeric"
+                          name="QtPeso"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtVolume]"
+                          dataType="numeric"
+                          name="QtVolume"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Cliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdInscricao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="CdInscricao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CidadeOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CidadeOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[UFOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="UFOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CidadeDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CidadeDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[UFDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="UFDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrNotaFiscal]"
+                          dataType="i4"
+                          name="NrNotaFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DataNF]"
+                          dataType="dbTimeStamp"
+                          name="DataNF" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[PesoNF]"
+                          dataType="numeric"
+                          name="PesoNF"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="CdProdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="DsProdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[QtdItem]"
+                          dataType="numeric"
+                          name="QtdItem"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[PesoItem]"
+                          dataType="numeric"
+                          name="PesoItem"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NomeMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="NomeMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CPFMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="CPFMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[Placa3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[TipoVeiculo3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[ANTT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ANTT" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NrRomaneio]"
+                          dataType="i4"
+                          name="NrRomaneio" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdTpDoctoFiscal]"
+                          dataType="i4"
+                          name="CdTpDoctoFiscal" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Origem OLE DB"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from vw_ITENNFQUALIDADE (nolock)</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SOFTRANS_TRANSLUTE]"
+                      connectionManagerRefId="Package.ConnectionManagers[SOFTRANS_TRANSLUTE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdEmpresa]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdEmpresa]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdEmpresa]"
+                          name="CdEmpresa"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsApelidoEmitente]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DsApelidoEmitente]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsApelidoEmitente]"
+                          name="DsApelidoEmitente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrDoctoFiscal]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrDoctoFiscal]"
+                          name="NrDoctoFiscal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DtEmissao]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DtEmissao]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DtEmissao]"
+                          name="DtEmissao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtPeso]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtPeso]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtPeso]"
+                          name="QtPeso"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtVolume]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtVolume]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtVolume]"
+                          name="QtVolume"
+                          precision="18"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Cliente]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Cliente]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Cliente]"
+                          name="Cliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdInscricao]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdInscricao]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdInscricao]"
+                          name="CdInscricao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CidadeOrigem]"
+                          length="30"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeOrigem]"
+                          name="CidadeOrigem"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[UFOrigem]"
+                          length="2"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFOrigem]"
+                          name="UFOrigem"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CidadeDestino]"
+                          length="30"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CidadeDestino]"
+                          name="CidadeDestino"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[UFDestino]"
+                          length="2"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[UFDestino]"
+                          name="UFDestino"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrNotaFiscal]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrNotaFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrNotaFiscal]"
+                          name="NrNotaFiscal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DataNF]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DataNF]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DataNF]"
+                          name="DataNF"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoNF]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[PesoNF]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoNF]"
+                          name="PesoNF"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdProdCliente]"
+                          length="60"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdProdCliente]"
+                          name="CdProdCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DsProdCliente]"
+                          length="120"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[DsProdCliente]"
+                          name="DsProdCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtdItem]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtdItem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[QtdItem]"
+                          name="QtdItem"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoItem]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[PesoItem]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[PesoItem]"
+                          name="PesoItem"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NomeMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NomeMotorista]"
+                          length="40"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NomeMotorista]"
+                          name="NomeMotorista"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CPFMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CPFMotorista]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CPFMotorista]"
+                          name="CPFMotorista"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoMotorista]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoMotorista]"
+                          name="TipoMotorista"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa1]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa1]"
+                          name="Placa1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo1]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo1]"
+                          name="TipoVeiculo1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa2]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa2]"
+                          name="Placa2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo2]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo2]"
+                          name="TipoVeiculo2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa3]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa3]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[Placa3]"
+                          name="Placa3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo3]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo3]"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[TipoVeiculo3]"
+                          name="TipoVeiculo3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[ANTT]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[ANTT]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[ANTT]"
+                          name="ANTT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrRomaneio]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrRomaneio]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[NrRomaneio]"
+                          name="NrRomaneio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdTpDoctoFiscal]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdTpDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[CdTpDoctoFiscal]"
+                          name="CdTpDoctoFiscal"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdEmpresa]"
+                          dataType="i4"
+                          name="CdEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DsApelidoEmitente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="DsApelidoEmitente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrDoctoFiscal]"
+                          dataType="i4"
+                          name="NrDoctoFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="DtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtPeso]"
+                          dataType="numeric"
+                          name="QtPeso"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtVolume]"
+                          dataType="numeric"
+                          name="QtVolume"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Cliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdInscricao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="CdInscricao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CidadeOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CidadeOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[UFOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="UFOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CidadeDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CidadeDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[UFDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="UFDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrNotaFiscal]"
+                          dataType="i4"
+                          name="NrNotaFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DataNF]"
+                          dataType="dbTimeStamp"
+                          name="DataNF" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[PesoNF]"
+                          dataType="numeric"
+                          name="PesoNF"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="CdProdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[DsProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="DsProdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[QtdItem]"
+                          dataType="numeric"
+                          name="QtdItem"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[PesoItem]"
+                          dataType="numeric"
+                          name="PesoItem"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NomeMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="NomeMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CPFMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="CPFMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[Placa3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Placa3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[TipoVeiculo3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="TipoVeiculo3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[ANTT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ANTT" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[NrRomaneio]"
+                          dataType="i4"
+                          name="NrRomaneio" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[CdTpDoctoFiscal]"
+                          dataType="i4"
+                          name="CdTpDoctoFiscal" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdEmpresa]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdEmpresa]"
+                          name="CdEmpresa" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DsApelidoEmitente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DsApelidoEmitente]"
+                          name="DsApelidoEmitente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrDoctoFiscal]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrDoctoFiscal]"
+                          name="NrDoctoFiscal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DtEmissao]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DtEmissao]"
+                          name="DtEmissao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtPeso]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtPeso]"
+                          name="QtPeso"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtVolume]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtVolume]"
+                          name="QtVolume"
+                          precision="18" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Cliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Cliente]"
+                          name="Cliente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdInscricao]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdInscricao]"
+                          name="CdInscricao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CidadeOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CidadeOrigem]"
+                          name="CidadeOrigem" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[UFOrigem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[UFOrigem]"
+                          name="UFOrigem" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CidadeDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CidadeDestino]"
+                          name="CidadeDestino" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[UFDestino]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[UFDestino]"
+                          name="UFDestino" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrNotaFiscal]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrNotaFiscal]"
+                          name="NrNotaFiscal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DataNF]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DataNF]"
+                          name="DataNF" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[PesoNF]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[PesoNF]"
+                          name="PesoNF"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdProdCliente]"
+                          name="CdProdCliente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DsProdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[DsProdCliente]"
+                          name="DsProdCliente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtdItem]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[QtdItem]"
+                          name="QtdItem"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[PesoItem]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[PesoItem]"
+                          name="PesoItem"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NomeMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NomeMotorista]"
+                          name="NomeMotorista" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CPFMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CPFMotorista]"
+                          name="CPFMotorista" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoMotorista]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoMotorista]"
+                          name="TipoMotorista" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa1]"
+                          name="Placa1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo1]"
+                          name="TipoVeiculo1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa2]"
+                          name="Placa2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo2]"
+                          name="TipoVeiculo2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[Placa3]"
+                          name="Placa3" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[TipoVeiculo3]"
+                          name="TipoVeiculo3" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ANTT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ANTT]"
+                          name="ANTT" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrRomaneio]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[NrRomaneio]"
+                          name="NrRomaneio" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdTpDoctoFiscal]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[CdTpDoctoFiscal]"
+                          name="CdTpDoctoFiscal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{695771D0-4687-46D9-9FAA-44A45C45B575}"
+          DTS:From="Package\Sequence Container\Delete Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\Sequence Container\Tarefa Fluxo de Dados" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Sequence Container\Delete Table"
+          TopLeft="41.5,24.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Sequence Container\Tarefa Fluxo de Dados"
+          TopLeft="49.5,135.212177121771" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Restrição]"
+          TopLeft="110.5,66.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.5,68.7121771217712"
+              Start="0,0"
+              End="31.5,61.2121771217712">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3560885608856" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.3560885608856"
+                    Point2="0,34.3560885608856"
+                    Point3="4,34.3560885608856" />
+                  <mssgle:LineSegment
+                    End="27.5,34.3560885608856" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,34.3560885608856"
+                    Point2="31.5,34.3560885608856"
+                    Point3="31.5,38.3560885608856" />
+                  <mssgle:LineSegment
+                    End="31.5,61.2121771217712" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="289,228"
+          Size="289,271"
+          Id="Package\Sequence Container"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Sequence Container\Tarefa Fluxo de Dados\Origem OLE DB"
+          TopLeft="205,71" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Sequence Container\Tarefa Fluxo de Dados\Destino OLE DB"
+          TopLeft="339,165" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="281,113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.5,52"
+              Start="0,0"
+              End="134.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="130.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.5,26"
+                    Point2="134.5,26"
+                    Point3="134.5,30" />
+                  <mssgle:LineSegment
+                    End="134.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
