@@ -1,0 +1,88 @@
+ select * from tmplstGeOpe_Exp (nolock)
+
+select 
+iTeus, dTotComp, dTotVenda, dVlVendaOrig, dVlFrete, dTotTx, sLucratReal
+from tmplstGeOpe_Exp (nolock)
+
+select 
+*
+from tmplstGeOpe_Exp (nolock)
+
+select 
+sNumProc as 'Numero do Processo',
+sProd as Produto,
+sCli as Cliente,
+sFamiCli as 'Família do Cliente',
+sConsignee as Consignee,
+sCiaAerea as 'Cia Aérea / Armador',
+sAgente as Agente,
+sPurOrder as 'Purcharse Order',
+sInvoice as Invoice,
+sRefCli as 'Ref. Cliente',
+sModalid as Modalidade,
+sNeg as Negociação,
+sEscopo as Escopo,
+sOferta as Oferta,
+sModPagtoMaster as 'Modalidade de Pagto master',
+
+sModPagtoHouse as 'Modalidade Pagto House',
+sIncoterm as Incoterm,
+sRespOpe as 'Responsável Operacional',
+dtAbert as 'Dt de Abertura',
+dtRecebInst as 'Recebimento da Instrução',
+dtSolicRes as 'Dt. Solicitação Reserva',
+dtSolicColeta as 'Solicitar coleta em',
+dtColetarDia as 'Coletar no Dia',
+dtColetaConf as 'Coleta confirmada em',
+sTransp as Transportadora,
+sNumDdeDseDue as 'Número DDE/DSE/DUE',
+dtSolicBooking as 'Solicitar Booking Em',
+dtReceb as 'Recebida em',
+sNumReserva as 'Número da Reserva',
+dtConfResEnvCli as 'Conf. De Reserva Enviada para o Cliente em:',
+
+dtDeadLineCli as 'Dead Line do Cliente',
+dtDeadLineArm as 'Dead Line do Armador',
+dtDraftReceb as 'Draft Recebido em',
+dtDraftEnvArm as 'Draft Enviado ao armador',
+dtGateIn as 'Gate In',
+dtDraftHblMblEnvAg as 'Draft HBL e MBL Enviados ao agente em',
+dtConfDraftAg as 'Confirmação de draft pelo Agente em:',
+sAeropDesembTermEstuf as 'Aeroporto de Desembaraço / Terminal de Estufagem',
+sAeropEmb as 'Aeroporto de Embarque / Porto de Embarque',
+dtConfEmb as 'Confimação de Embarque/ Conf. Saída',
+sAeropDest as 'Aeroporto de Destino / Porto de Destino',
+sPaisDest as 'País de destino',
+dtPrevChegPortoDest as 'Prev. Chegada Porto Destino',
+dtChegAeropDest as 'Chegada Aeroporto Destino / Conf. Chegada Porto Destino',
+dtLibMercCnee as 'Liberação Merc. Pelo Cnee',
+sMawbMbl as 'MAWB/MBL',
+sHawbHbl as 'HAWB/HBL',
+
+sNavio as Navio,
+iQtdVol as 'Qtd Volume',
+dTotBruto as 'Tot. Bruto',
+dTotTx as 'Tot. Tx',
+sM3 as 'M³',
+iQtdCNT as 'Qtd de CNT',
+iTeus as TEUS,
+dTotComp as 'Total Compra',
+dTotVenda as 'Total Venda',
+sMoedaVendaOrig as 'Moeda Venda Origem',
+dVlVendaOrig as 'VL Venda Origem',
+sMoedaFrete as 'Moeda Frete',
+dVlFrete as 'VL Frete',
+dLucroOpe as 'Lucro Operacional',
+sLucratReal as 'Lucratividade Real',
+
+sMotCanc as 'Motivo do Cancelamento',
+dDiverg as Divergência,
+dtEnvFatCli as 'DT Envio Fatura ao Cliente',
+dtEnvFatAg as 'DT Envio Fatura ao Agente',
+sJustPrej as 'ustificativa Prejuizo',
+dtEmisFat as 'Dt Emissão Fatura',
+dVlAproxFat as 'Vl. Aprox. da Fatura',
+dVlTotItensVenda as 'Valor total de intens a venda',
+dProfitPgAg as	ProfitPgAg,
+sMoedaProfitAg as 'Moeda ProfitAg'
+from tmplstGeOpe_Exp (nolock)

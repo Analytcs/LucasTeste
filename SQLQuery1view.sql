@@ -1,0 +1,1 @@
+select * from [dbo].[stg_CRDBase] (nolock)

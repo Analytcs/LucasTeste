@@ -1,0 +1,1 @@
+select * from stg_Base_Viagens_Geral
