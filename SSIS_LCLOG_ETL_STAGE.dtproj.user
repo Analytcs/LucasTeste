@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <AssessmentRuleSuppressionSetting />
+        <UseWinAuth>false</UseWinAuth>
+        <WinAuthUserName />
+        <WinAuthDomain />
+        <ServerName />
+        <PathOnServer />
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>{B3505576-1049-48A2-A03E-3DC14735DA3D}</Id>
+            <Name>{B3505576-1049-48A2-A03E-3DC14735DA3D}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfDxKr0FpfEqDikGTXJdbPAAAAABOAAAAewBCADMANQAwADUANQA3ADYALQAxADAANAA5AC0ANAA4AEEAMgAtAEEAMAAzAEUALQAzAEQAQwAxADQANwAzADUARABBADMARAB9AAAAEGYAAAABAAAgAAAAYj6qDrOO2eaGo1XJt5c231vst1BtVrWE01M2MK6w6mQAAAAADoAAAAACAAAgAAAA9qU9VZJ2uRsqJgTuBgSrS/n4lr9jcNKJGTnh3deWzbcgAAAAm2s4RYsRPOnsuAViLk5ZmWT6yeft+vNDHoubinWejtFAAAAAqirSmF+gyUs2tHWQXQxzpEAZenq5VYvnZma2T8gpgqGNxf9i8adCPDkM79jlus8njnmYT7zJxHAJMnCDpulLmg==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>{B3505576-1049-48A2-A03E-3DC14735DA3D}</Id>
+            <Name>{B3505576-1049-48A2-A03E-3DC14735DA3D}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfDxKr0FpfEqDikGTXJdbPAAAAABOAAAAewBCADMANQAwADUANQA3ADYALQAxADAANAA5AC0ANAA4AEEAMgAtAEEAMAAzAEUALQAzAEQAQwAxADQANwAzADUARABBADMARAB9AAAAEGYAAAABAAAgAAAAkfSNG+AdYpufs5G7udLLvgQ9tCEQVy6knNfx2hqQF7oAAAAADoAAAAACAAAgAAAAA+o1XHzX4TD6Mztwl/0UGjMFcSGabK3ceZfjuSefx0IgAAAAurzbN4L5Y0tUSQnLdzYX664Ch0brYIBWs7rNbaWPY/BAAAAAK/iAARpV37GH9hGgUZtLYn6TVStGDayIY+KI/6ITE8O/IYazAkY95HFncXBglMtWESLh5J3/Oy4FMFrfoElb4Q==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <OfflineMode>false</OfflineMode>
+        <ProgressReporting>false</ProgressReporting>
+        <ParameterConfigurationSensitiveValues />
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>
